@@ -30,6 +30,9 @@ const chooseMethod = async () => {
     case "3":
       updateCustomer();
       break;
+    case "4":
+      deleteCustomer();
+      break;
     case "5":
       await mongoose.disconnect();
       console.log("\nTo the end...");
@@ -72,7 +75,7 @@ const updateCustomer = async () => {
     name: customerName,
     age: customerAge,
   });
-  console.log(`\nCustomer Updated.`);
+  console.log(`\nCustomer Updated`);
   chooseMethod();
 };
 
@@ -89,5 +92,16 @@ const printAllCustomers = async () => {
     );
   });
 };
+
+const deleteCustomer = async () => {
+  await printAllCustomers();
+  const customerID = prompt(
+    `\nCopy and paste the id of the record you want to delete: `
+  );
+  await Customer.findByIdAndDelete(customerID);
+  console.log(`\nCustomer Deleted`);
+  chooseMethod();
+
+}
 
 connect();
