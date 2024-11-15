@@ -59,12 +59,15 @@ const viewAllCustomers = async () => {
     process.stdout.write('\x1Bc')
     console.log('Here are all the customers in your database:\n')
     allCustomers.forEach(customer => {
-        console.log(customer._id, `--`, `Name: ${customer.name}, Age: ${customer.age}`)
+        console.log(`id: ${customer._id.toString()}`, `--`, `Name: ${customer.name}, Age: ${customer.age}`)
     })
     prompt("\nPress enter to continue.")
     chooseMethod();
 }
 
+const updateCustomer = async () => {
+
+}
 
 //connect();
 connect();
